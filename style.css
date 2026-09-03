@@ -2,17 +2,20 @@
    index.html / privacy.html / terms.html で共通利用 */
 
 :root {
-  --bg: #07080a;
-  --bg-elevated: #101215;
-  --border: rgba(255, 255, 255, 0.08);
-  --text-primary: #f5f6f7;
-  --text-secondary: rgba(245, 246, 247, 0.62);
-  --text-tertiary: rgba(245, 246, 247, 0.4);
+  --bg: #f3f7f4;
+  --bg-card: #ffffff;
+  --border: rgba(13, 26, 20, 0.09);
+  --text-primary: #101913;
+  --text-secondary: rgba(16, 25, 19, 0.64);
+  --text-tertiary: rgba(16, 25, 19, 0.42);
   --brand-green: #0aa17d;
-  --brand-green-soft: rgba(10, 161, 125, 0.14);
+  --brand-green-deep: #067457;
+  --brand-green-soft: rgba(10, 161, 125, 0.12);
+  --highlight-bg: #c7f0e0;
   --plus-pink: #fa2e8c;
   --plus-pink-light: #ff8cc2;
-  --max-width: 860px;
+  --plus-soft: rgba(250, 46, 140, 0.1);
+  --max-width: 900px;
 }
 
 * {
@@ -25,7 +28,12 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background-color: #d6f0e6;
+  background-image:
+    radial-gradient(circle at 90% 8%, rgba(10, 161, 125, 0.30) 0%, rgba(10, 161, 125, 0.11) 45%, transparent 72%),
+    radial-gradient(circle at 8% 92%, rgba(6, 132, 140, 0.22) 0%, rgba(10, 161, 125, 0.06) 50%, transparent 72%),
+    linear-gradient(164deg, #ffffff 0%, #f0faf6 32%, #d6f0e6 66%, #b4e4d3 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Segoe UI", Roboto, sans-serif;
   line-height: 1.75;
@@ -33,7 +41,7 @@ body {
 }
 
 a {
-  color: var(--brand-green);
+  color: var(--brand-green-deep);
   text-decoration: none;
 }
 a:hover {
@@ -42,6 +50,10 @@ a:hover {
 
 img {
   max-width: 100%;
+}
+
+svg {
+  display: block;
 }
 
 /* ── header ───────────────────────────────────────────── */
@@ -53,15 +65,15 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px clamp(20px, 5vw, 48px);
-  background: rgba(7, 8, 10, 0.85);
+  padding: 16px clamp(20px, 5vw, 48px);
+  background: rgba(243, 247, 244, 0.82);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border);
 }
 
 .logo {
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 800;
   letter-spacing: -0.02em;
   display: inline-flex;
@@ -72,9 +84,15 @@ img {
 .logo .task { color: var(--text-primary); }
 .logo .dot { color: var(--text-primary); }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 32px);
+}
+
 .site-header nav {
   display: flex;
-  gap: clamp(14px, 3vw, 28px);
+  gap: clamp(14px, 3vw, 26px);
   font-size: 14px;
   font-weight: 600;
 }
@@ -87,12 +105,29 @@ img {
   text-decoration: none;
 }
 
+.soon-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: var(--text-primary);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.soon-pill:hover {
+  background: var(--brand-green-deep);
+  text-decoration: none;
+}
+
 /* ── layout ───────────────────────────────────────────── */
 
 main {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: clamp(40px, 8vw, 88px) clamp(20px, 5vw, 24px) 80px;
+  padding: clamp(36px, 8vw, 72px) clamp(20px, 5vw, 24px) 80px;
 }
 
 .eyebrow {
@@ -100,17 +135,24 @@ main {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: var(--brand-green);
+  color: var(--brand-green-deep);
   text-transform: uppercase;
   margin-bottom: 14px;
 }
 
 h1 {
-  font-size: clamp(30px, 6vw, 46px);
+  font-size: clamp(32px, 6vw, 50px);
   font-weight: 800;
   letter-spacing: -0.02em;
-  line-height: 1.2;
-  margin: 0 0 18px;
+  line-height: 1.28;
+  margin: 0 0 20px;
+}
+
+.hl {
+  background: var(--highlight-bg);
+  padding: 0 10px;
+  border-radius: 8px;
+  display: inline-block;
 }
 
 h2 {
@@ -144,7 +186,7 @@ ul, ol {
 .lede {
   font-size: 18px;
   color: var(--text-secondary);
-  max-width: 640px;
+  max-width: 560px;
 }
 
 .updated {
@@ -157,7 +199,7 @@ ul, ol {
 
 .hero {
   text-align: center;
-  padding: clamp(24px, 6vw, 40px) 0 clamp(48px, 8vw, 72px);
+  padding: clamp(20px, 6vw, 32px) 0 clamp(44px, 8vw, 64px);
 }
 .hero .lede {
   margin: 0 auto 30px;
@@ -169,11 +211,26 @@ ul, ol {
   padding: 7px 16px;
   border-radius: 999px;
   background: var(--brand-green-soft);
-  border: 1px solid rgba(10, 161, 125, 0.35);
-  color: var(--brand-green);
+  border: 1px solid rgba(10, 161, 125, 0.3);
+  color: var(--brand-green-deep);
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 22px;
+}
+
+.appstore-badge {
+  display: inline-block;
+  margin-bottom: 18px;
+  border-radius: 10px;
+  transition: opacity 0.15s;
+}
+.appstore-badge:hover {
+  opacity: 0.8;
+}
+.appstore-badge img {
+  height: 48px;
+  width: auto;
+  display: block;
 }
 
 .cta-row {
@@ -187,59 +244,82 @@ ul, ol {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 13px 24px;
+  padding: 13px 26px;
   border-radius: 999px;
   font-weight: 700;
   font-size: 15px;
 }
 .btn-primary {
-  background: var(--brand-green);
-  color: #05130f;
+  background: var(--text-primary);
+  color: var(--bg);
 }
 .btn-primary:hover {
-  background: #0bb98f;
+  background: var(--brand-green-deep);
+  color: #fff;
   text-decoration: none;
 }
 .btn-secondary {
-  background: var(--bg-elevated);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-primary);
 }
 .btn-secondary:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(16, 25, 19, 0.25);
   text-decoration: none;
 }
 
-/* ── feature grid (index only) ───────────────────────── */
+/* ── feature sections (index only) ───────────────────── */
+
+.section-block {
+  margin-top: clamp(40px, 7vw, 60px);
+}
+.section-block:first-child {
+  margin-top: 0;
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.section-logo {
+  height: 26px;
+  width: auto;
+}
+.section-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-tertiary);
+  letter-spacing: 0.01em;
+}
+
+.plus-block {
+  background: linear-gradient(135deg, rgba(250, 46, 140, 0.07), rgba(255, 140, 194, 0.03));
+  border: 1px solid rgba(250, 46, 140, 0.16);
+  border-radius: 24px;
+  padding: clamp(20px, 4vw, 32px);
+}
 
 .feature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-  margin-top: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px 20px;
+  margin-top: 28px;
+  text-align: center;
+}
+.plus-grid {
+  margin-top: 22px;
 }
 
-.feature-card {
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 22px;
-}
 .feature-card .icon {
-  width: 38px;
-  height: 38px;
-  border-radius: 10px;
-  background: var(--brand-green-soft);
-  color: var(--brand-green);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin-bottom: 14px;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 14px;
+  color: var(--text-primary);
 }
 .feature-card.plus .icon {
-  background: rgba(250, 46, 140, 0.14);
-  color: var(--plus-pink-light);
+  color: var(--plus-pink);
 }
 .feature-card h3 {
   margin: 0 0 6px;
@@ -250,19 +330,6 @@ ul, ol {
   font-size: 13.5px;
 }
 
-.plus-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  font-weight: 800;
-  color: #fff;
-  background: linear-gradient(135deg, var(--plus-pink-light), var(--plus-pink));
-  padding: 3px 9px;
-  border-radius: 999px;
-  margin-left: 8px;
-  vertical-align: middle;
-}
 
 /* ── legal pages ─────────────────────────────────────── */
 
@@ -274,7 +341,7 @@ ul, ol {
 }
 
 .callout {
-  background: var(--bg-elevated);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-left: 3px solid var(--brand-green);
   border-radius: 10px;
@@ -288,17 +355,28 @@ ul, ol {
 
 footer {
   border-top: 1px solid var(--border);
-  padding: 36px clamp(20px, 5vw, 48px) 48px;
+  padding: 32px clamp(20px, 5vw, 48px) 44px;
 }
 footer .footer-inner {
   max-width: var(--max-width);
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: 18px;
   font-size: 13px;
   color: var(--text-tertiary);
+}
+footer .credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+footer .credit .ks-logo {
+  height: 18px;
+  width: auto;
+  opacity: 0.6;
 }
 footer nav {
   display: flex;
