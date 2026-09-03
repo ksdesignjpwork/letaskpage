@@ -160,6 +160,10 @@ h1 {
   margin: 0 0 20px;
   text-wrap: balance;
 }
+.hero h1 {
+  font-size: clamp(32px, 7vw, 72px);
+  line-height: 1.15;
+}
 
 .hl {
   background: var(--brand-green);
@@ -206,6 +210,12 @@ ul, ol {
   font-size: 18px;
   color: var(--text-secondary);
   max-width: 560px;
+}
+@media (min-width: 900px) {
+  .hero .lede {
+    font-size: 20px;
+    max-width: 620px;
+  }
 }
 
 .updated {
@@ -313,11 +323,106 @@ ul, ol {
   letter-spacing: 0.01em;
 }
 
-.plus-block {
-  background: linear-gradient(135deg, rgba(250, 46, 140, 0.07), rgba(255, 140, 194, 0.03));
-  border: 1px solid rgba(250, 46, 140, 0.16);
-  border-radius: 24px;
-  padding: clamp(20px, 4vw, 32px);
+.plus-promo {
+  background: linear-gradient(135deg, var(--plus-pink-light) 0%, var(--plus-pink) 45%, #9e125c 100%);
+  border-radius: 28px;
+  padding: clamp(28px, 5vw, 48px);
+  color: #fff;
+  box-shadow: 0 24px 56px -24px rgba(158, 18, 92, 0.55);
+  margin-bottom: clamp(44px, 7vw, 64px);
+}
+.plus-promo-head {
+  text-align: center;
+  margin: 0 auto 12px;
+  max-width: 620px;
+}
+.plus-promo-logo {
+  height: 40px;
+  width: auto;
+  margin-bottom: 20px;
+}
+.plus-promo-title {
+  color: #fff;
+  font-size: clamp(22px, 3.4vw, 34px);
+  border: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+.plus-promo-lede {
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 15.5px;
+  margin: 0;
+}
+.plus-promo .feature-card .icon {
+  color: #fff;
+}
+.plus-promo .feature-card h3 {
+  color: #fff;
+}
+.plus-promo .feature-card p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.plus-pricing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  margin-top: clamp(28px, 5vw, 40px);
+}
+.price-card {
+  position: relative;
+  min-width: 168px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 18px;
+  padding: 20px 30px;
+}
+.price-card.best {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.price-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  color: var(--plus-pink);
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 12px;
+  border-radius: 999px;
+}
+.price-label {
+  display: block;
+  font-size: 12.5px;
+  opacity: 0.85;
+  margin-bottom: 6px;
+}
+.price-value {
+  display: block;
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.price-value small {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.85;
+}
+.price-note {
+  display: block;
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 4px;
+}
+.plus-promo-note {
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 22px 0 0;
 }
 
 .feature-grid {
@@ -389,13 +494,15 @@ footer .footer-inner {
 }
 footer .credit {
   display: inline-flex;
-  align-items: center;
+  align-items: baseline;
   gap: 7px;
 }
 footer .credit .ks-logo {
-  height: 34px;
+  height: 24px;
   width: auto;
   opacity: 0.75;
+  vertical-align: middle;
+  transform: translateY(6px);
 }
 footer nav {
   display: flex;
