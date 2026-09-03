@@ -430,11 +430,15 @@ ul, ol {
 }
 
 .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 30px 20px;
   margin-top: 28px;
   text-align: center;
+}
+.feature-grid .feature-card {
+  flex: 0 1 200px;
 }
 .plus-grid {
   margin-top: 22px;
@@ -495,15 +499,13 @@ footer .footer-inner {
 }
 footer .credit {
   display: inline-flex;
-  align-items: baseline;
+  align-items: center;
   gap: 7px;
 }
 footer .credit .ks-logo {
   height: 24px;
   width: auto;
   opacity: 0.75;
-  vertical-align: middle;
-  transform: translateY(6px);
 }
 footer nav {
   display: flex;
