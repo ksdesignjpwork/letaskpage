@@ -355,6 +355,10 @@ ul, ol {
 }
 .plus-promo .feature-card .icon {
   color: #fff;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  box-sizing: content-box;
+  padding: 9px;
 }
 .plus-promo .feature-card h3 {
   color: #fff;
@@ -441,9 +445,6 @@ ul, ol {
   height: 30px;
   margin: 0 auto 14px;
   color: var(--text-primary);
-}
-.feature-card.plus .icon {
-  color: var(--plus-pink);
 }
 .feature-card h3 {
   margin: 0 0 6px;
