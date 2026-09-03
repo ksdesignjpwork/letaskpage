@@ -1,0 +1,316 @@
+/* LETask — 共有スタイルシート
+   index.html / privacy.html / terms.html で共通利用 */
+
+:root {
+  --bg: #07080a;
+  --bg-elevated: #101215;
+  --border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f5f6f7;
+  --text-secondary: rgba(245, 246, 247, 0.62);
+  --text-tertiary: rgba(245, 246, 247, 0.4);
+  --brand-green: #0aa17d;
+  --brand-green-soft: rgba(10, 161, 125, 0.14);
+  --plus-pink: #fa2e8c;
+  --plus-pink-light: #ff8cc2;
+  --max-width: 860px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Segoe UI", Roboto, sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--brand-green);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* ── header ───────────────────────────────────────────── */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px clamp(20px, 5vw, 48px);
+  background: rgba(7, 8, 10, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 1px;
+}
+.logo .le { color: var(--brand-green); }
+.logo .task { color: var(--text-primary); }
+.logo .dot { color: var(--text-primary); }
+
+.site-header nav {
+  display: flex;
+  gap: clamp(14px, 3vw, 28px);
+  font-size: 14px;
+  font-weight: 600;
+}
+.site-header nav a {
+  color: var(--text-secondary);
+}
+.site-header nav a:hover,
+.site-header nav a.active {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+/* ── layout ───────────────────────────────────────────── */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 88px) clamp(20px, 5vw, 24px) 80px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--brand-green);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+h1 {
+  font-size: clamp(30px, 6vw, 46px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 44px 0 14px;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+main > h2:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 26px 0 8px;
+  color: var(--text-primary);
+}
+
+p, li {
+  color: var(--text-secondary);
+  font-size: 15.5px;
+}
+
+ul, ol {
+  padding-left: 1.3em;
+}
+
+.lede {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.updated {
+  font-size: 13px;
+  color: var(--text-tertiary);
+  margin-bottom: 40px;
+}
+
+/* ── hero (index only) ───────────────────────────────── */
+
+.hero {
+  text-align: center;
+  padding: clamp(24px, 6vw, 40px) 0 clamp(48px, 8vw, 72px);
+}
+.hero .lede {
+  margin: 0 auto 30px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: var(--brand-green-soft);
+  border: 1px solid rgba(10, 161, 125, 0.35);
+  color: var(--brand-green);
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.cta-row {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 15px;
+}
+.btn-primary {
+  background: var(--brand-green);
+  color: #05130f;
+}
+.btn-primary:hover {
+  background: #0bb98f;
+  text-decoration: none;
+}
+.btn-secondary {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+}
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  text-decoration: none;
+}
+
+/* ── feature grid (index only) ───────────────────────── */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.feature-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+}
+.feature-card .icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: var(--brand-green-soft);
+  color: var(--brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 14px;
+}
+.feature-card.plus .icon {
+  background: rgba(250, 46, 140, 0.14);
+  color: var(--plus-pink-light);
+}
+.feature-card h3 {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+.feature-card p {
+  margin: 0;
+  font-size: 13.5px;
+}
+
+.plus-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--plus-pink-light), var(--plus-pink));
+  padding: 3px 9px;
+  border-radius: 999px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+/* ── legal pages ─────────────────────────────────────── */
+
+.legal-nav {
+  display: flex;
+  gap: 18px;
+  font-size: 13px;
+  margin-bottom: 36px;
+}
+
+.callout {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--brand-green);
+  border-radius: 10px;
+  padding: 16px 18px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 18px 0;
+}
+
+/* ── footer ───────────────────────────────────────────── */
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 36px clamp(20px, 5vw, 48px) 48px;
+}
+footer .footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+footer nav {
+  display: flex;
+  gap: 16px;
+}
+footer nav a {
+  color: var(--text-tertiary);
+}
+footer nav a:hover {
+  color: var(--text-secondary);
+}
+footer .disclaimer {
+  max-width: 640px;
+  color: var(--text-tertiary);
+}
