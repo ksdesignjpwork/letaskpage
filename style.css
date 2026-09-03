@@ -65,6 +65,8 @@ svg {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 12px;
   padding: 16px clamp(20px, 5vw, 48px);
   background: rgba(243, 247, 244, 0.82);
   backdrop-filter: blur(14px);
@@ -73,16 +75,14 @@ svg {
 }
 
 .logo {
-  font-size: 21px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
   display: inline-flex;
-  align-items: baseline;
-  gap: 1px;
+  align-items: center;
 }
-.logo .le { color: var(--brand-green); }
-.logo .task { color: var(--text-primary); }
-.logo .dot { color: var(--text-primary); }
+.logo img {
+  height: 26px;
+  width: auto;
+  display: block;
+}
 
 .header-right {
   display: flex;
@@ -92,12 +92,14 @@ svg {
 
 .site-header nav {
   display: flex;
-  gap: clamp(14px, 3vw, 26px);
+  flex-wrap: wrap;
+  gap: 10px clamp(14px, 3vw, 26px);
   font-size: 14px;
   font-weight: 600;
 }
 .site-header nav a {
   color: var(--text-secondary);
+  white-space: nowrap;
 }
 .site-header nav a:hover,
 .site-header nav a.active {
@@ -105,21 +107,27 @@ svg {
   text-decoration: none;
 }
 
+@media (max-width: 640px) {
+  .header-right {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
 .soon-pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 15px;
-  border-radius: 999px;
-  background: var(--text-primary);
-  color: #fff;
-  font-size: 12.5px;
-  font-weight: 700;
-  white-space: nowrap;
+  transition: opacity 0.15s;
 }
 .soon-pill:hover {
-  background: var(--brand-green-deep);
-  text-decoration: none;
+  opacity: 0.75;
+}
+.soon-pill img {
+  height: 33px;
+  width: auto;
+  display: block;
 }
 
 /* ── layout ───────────────────────────────────────────── */
@@ -146,10 +154,12 @@ h1 {
   letter-spacing: -0.02em;
   line-height: 1.28;
   margin: 0 0 20px;
+  text-wrap: balance;
 }
 
 .hl {
-  background: var(--highlight-bg);
+  background: var(--brand-green);
+  color: #fff;
   padding: 0 10px;
   border-radius: 8px;
   display: inline-block;
@@ -177,6 +187,11 @@ h3 {
 p, li {
   color: var(--text-secondary);
   font-size: 15.5px;
+  text-wrap: pretty;
+}
+
+.chunk {
+  display: inline-block;
 }
 
 ul, ol {
@@ -284,7 +299,7 @@ ul, ol {
   margin-bottom: 8px;
 }
 .section-logo {
-  height: 26px;
+  height: 42px;
   width: auto;
 }
 .section-label {
@@ -374,9 +389,9 @@ footer .credit {
   gap: 7px;
 }
 footer .credit .ks-logo {
-  height: 18px;
+  height: 34px;
   width: auto;
-  opacity: 0.6;
+  opacity: 0.75;
 }
 footer nav {
   display: flex;
