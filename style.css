@@ -521,3 +521,69 @@ footer .disclaimer {
   max-width: 640px;
   color: var(--text-tertiary);
 }
+
+/* ── entrance animations ─────────────────────────────── */
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes markerSweep {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.site-header {
+  animation: fadeInDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-badge,
+.hero h1,
+.hero .lede,
+.hero .appstore-badge,
+.hero .cta-row {
+  animation: fadeInDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-badge            { animation-delay: 0.08s; }
+.hero h1               { animation-delay: 0.18s; }
+.hero .lede            { animation-delay: 0.30s; }
+.hero .appstore-badge  { animation-delay: 0.40s; }
+.hero .cta-row         { animation-delay: 0.48s; }
+
+.hl {
+  animation: markerSweep 0.55s cubic-bezier(0.65, 0, 0.35, 1) both;
+  animation-delay: 0.85s;
+}
+
+.plus-promo {
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.55s;
+}
+.section-block {
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.62s;
+}
+main > section:last-of-type,
+footer {
+  animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.7s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
