@@ -176,11 +176,33 @@ h1 {
 }
 
 .hl {
-  background: var(--brand-green);
-  color: #fff;
-  padding: 0 10px;
-  border-radius: 8px;
+  position: relative;
   display: inline-block;
+  padding: 0 10px;
+  color: var(--text-primary);
+  border-radius: 8px;
+  isolation: isolate;
+}
+/* マーカー本体（緑背景）。テキストの後ろに敷かれ、スイープで左から現れる */
+.hl::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--brand-green);
+  border-radius: 8px;
+}
+/* マーカーが通過した部分だけ白文字に見せるための複製テキスト。
+   最前面に重ね、::beforeと同じクリップで同期させる */
+.hl::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  padding: 0 10px;
+  color: #fff;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 h2 {
@@ -617,9 +639,35 @@ footer .disclaimer {
 .hero .appstore-badge  { animation-delay: 0.44s; }
 .hero .cta-row         { animation-delay: 0.52s; }
 
-.hl {
+/* 「もう見逃さない。」は最初から黒文字で見えており、遅れてマーカーが
+   左から右へ引かれ、通過した部分だけ白文字に変わる。マーカー(::before)と
+   白文字の複製(::after)を同じクリップで同期させることで実現している。 */
+.hl::before,
+.hl::after {
+  clip-path: inset(0 100% 0 0);
   animation: markerSweep 0.55s cubic-bezier(0.65, 0, 0.35, 1) both;
   animation-delay: 0.85s;
+}
+
+@keyframes checkDraw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* マーカーが引き終わった後、右上に「ペンでチェックを書く」ようなアニメーション。
+   バッジ等は使わず、ストロークそのものを手描き風に少し傾けて1本で描く。 */
+.hl-check {
+  position: absolute;
+  top: -20px;
+  right: -22px;
+  z-index: 2;
+  transform: rotate(-8deg);
+  filter: drop-shadow(0 2px 4px rgba(16, 25, 19, 0.18));
+}
+.hl-check-mark {
+  stroke-dasharray: 44;
+  stroke-dashoffset: 44;
+  animation: checkDraw 0.45s cubic-bezier(0.5, 0.05, 0.15, 1) both;
+  animation-delay: 1.45s;
 }
 
 .plus-promo {
