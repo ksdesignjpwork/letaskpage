@@ -257,6 +257,13 @@ ul, ol {
   margin-bottom: 22px;
 }
 
+.download-hint {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--brand-green-deep);
+  margin: 0 0 10px;
+}
+
 .appstore-badge {
   display: inline-block;
   margin-bottom: 18px;
@@ -598,6 +605,7 @@ footer .disclaimer {
 .hero-badge,
 .hero h1,
 .hero .lede,
+.hero .download-hint,
 .hero .appstore-badge,
 .hero .cta-row {
   animation: fadeInDown 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -605,8 +613,9 @@ footer .disclaimer {
 .hero-badge            { animation-delay: 0.08s; }
 .hero h1               { animation-delay: 0.18s; }
 .hero .lede            { animation-delay: 0.30s; }
-.hero .appstore-badge  { animation-delay: 0.40s; }
-.hero .cta-row         { animation-delay: 0.48s; }
+.hero .download-hint   { animation-delay: 0.38s; }
+.hero .appstore-badge  { animation-delay: 0.44s; }
+.hero .cta-row         { animation-delay: 0.52s; }
 
 .hl {
   animation: markerSweep 0.55s cubic-bezier(0.65, 0, 0.35, 1) both;
