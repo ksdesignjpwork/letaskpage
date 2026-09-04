@@ -649,27 +649,6 @@ footer .disclaimer {
   animation-delay: 0.85s;
 }
 
-@keyframes checkDraw {
-  to { stroke-dashoffset: 0; }
-}
-
-/* マーカーが引き終わった後、右上に「ペンでチェックを書く」ようなアニメーション。
-   バッジ等は使わず、ストロークそのものを手描き風に少し傾けて1本で描く。 */
-.hl-check {
-  position: absolute;
-  top: -20px;
-  right: -22px;
-  z-index: 2;
-  transform: rotate(-8deg);
-  filter: drop-shadow(0 2px 4px rgba(16, 25, 19, 0.18));
-}
-.hl-check-mark {
-  stroke-dasharray: 44;
-  stroke-dashoffset: 44;
-  animation: checkDraw 0.45s cubic-bezier(0.5, 0.05, 0.15, 1) both;
-  animation-delay: 1.45s;
-}
-
 .plus-promo {
   animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   animation-delay: 0.55s;
